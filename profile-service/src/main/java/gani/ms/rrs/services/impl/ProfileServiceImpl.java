@@ -32,22 +32,22 @@ public class ProfileServiceImpl implements IProfileService {
     }
 
     @Override
-    public Profile getProfile(Integer profileId) {
+    public Profile getProfile(@NotNull Integer profileId) {
         return  (Profile)profileRepository.getOne(profileId);
     }
 
     @Override
-    public void updateProfile(Profile profile) {
+    public void updateProfile(@NotNull Profile profile) {
         profileRepository.save(profile);
     }
 
     @Override
-    public void deleteProfile(Profile profile) {
+    public void deleteProfile(@NotNull Profile profile) {
         profileRepository.delete(profile);
     }
 
     @Override
-    public void deleteProfile(Integer profileId) {
+    public void deleteProfile(@NotNull Integer profileId) {
         profileRepository.delete(profileId);
     }
 

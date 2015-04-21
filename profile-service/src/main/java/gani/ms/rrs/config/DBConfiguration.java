@@ -2,6 +2,7 @@ package gani.ms.rrs.config;
 
 import org.springframework.boot.autoconfigure.jdbc.DataSourceBuilder;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.orm.jpa.EntityScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
@@ -14,7 +15,8 @@ import javax.sql.DataSource;
  * Created by ganesh.vallabhaneni on 4/13/2015.
  */
 @Configuration
-@EnableJpaRepositories(basePackages = "gani.ms.rrs.`    `   ")
+@EnableJpaRepositories(basePackages = "gani.ms.rrs.repositories")
+@EntityScan(basePackages = "gani.ms.rrs.domain" )
 public class DBConfiguration {
 
     @ConfigurationProperties(prefix = "spring.datasource.pg")
