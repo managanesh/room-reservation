@@ -1,5 +1,7 @@
 package gani.ms.rrs.domain;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;

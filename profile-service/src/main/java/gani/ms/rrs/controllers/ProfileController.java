@@ -1,10 +1,13 @@
 package gani.ms.rrs.controllers;
 
 import gani.ms.rrs.domain.Profile;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import gani.ms.rrs.repositories.ProfileRepository;
+import gani.ms.rrs.services.IProfileService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 /**
  * Created by ganesh.vallabhaneni on 4/16/2015.
@@ -13,9 +16,23 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/profile")
 public class ProfileController {
 
+    @Autowired
+    IProfileService profileService;
+
     @RequestMapping(value = "/{profileId}", method = RequestMethod.GET, produces = "application/json")
     public Profile getProfile(@PathVariable("profileId") Integer profileId) {
-        System.out.println("ProfileController.getProfile");
-        return new Profile();
+        Optional profileObj;
+
+    return Optional.of(profileService.getProfile(profileId)).orElse(new Profile());
     }
+
+    @RequestMapping( method = RequestMethod.POST, consumes = {MediaType.APPLICATION_JSON_VALUE},
+            produces = {MediaType.APPLICATION_JSON_VALUE})
+
+    public Profile CreateProfile(@RequestBody Profile profile){
+
+                profile =  profileService.updateProfile(profile);
+                return profile;
+    }
+
 }

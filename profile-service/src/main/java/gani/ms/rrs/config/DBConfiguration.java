@@ -28,8 +28,6 @@ public class DBConfiguration {
         return DataSourceBuilder.create().build();
     }
 
-    @ConfigurationProperties(prefix = "spring.datasource.h2")
-    @Bean(name="h2DataSource")
     @Profile(value = "local")
     public DataSource h2DataSource(){
         return DataSourceBuilder.create().build();

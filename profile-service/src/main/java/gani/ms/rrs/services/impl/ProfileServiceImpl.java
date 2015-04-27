@@ -37,8 +37,8 @@ public class ProfileServiceImpl implements IProfileService {
     }
 
     @Override
-    public void updateProfile(@NotNull Profile profile) {
-        profileRepository.save(profile);
+    public Profile updateProfile(@NotNull Profile profile) {
+        return profileRepository.save(profile);
     }
 
     @Override

@@ -11,7 +11,7 @@ public interface IProfileService {
 
     public Profile getProfile(Integer profileId);
 
-    public void updateProfile(Profile profile);
+    public Profile updateProfile(Profile profile);
 
     public void deleteProfile(Profile profile);
 
