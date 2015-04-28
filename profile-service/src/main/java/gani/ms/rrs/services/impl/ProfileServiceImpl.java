@@ -33,7 +33,8 @@ public class ProfileServiceImpl implements IProfileService {
 
     @Override
     public Profile getProfile(@NotNull Integer profileId) {
-        return  (Profile)profileRepository.getOne(profileId);
+      //  return  (Profile)profileRepository.getOne(profileId);
+        return profileRepository.findByProfileId(profileId);
     }
 
     @Override

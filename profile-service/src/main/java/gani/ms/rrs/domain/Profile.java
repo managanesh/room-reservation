@@ -1,16 +1,16 @@
 package gani.ms.rrs.domain;
 
 import com.fasterxml.jackson.annotation.JsonView;
+import org.hibernate.annotations.Fetch;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 
 /**
  * Created by ganesh.vallabhaneni on 4/13/2015.
  */
-@Entity
+@Entity()
+@Table(uniqueConstraints = @UniqueConstraint(columnNames = {"name"}))
 public class Profile implements Serializable{
 
 
@@ -57,9 +57,8 @@ public class Profile implements Serializable{
         Profile profile = (Profile) o;
 
         if (email != null ? !email.equals(profile.email) : profile.email != null) return false;
-        if (profileId != null ? !profileId.equals(profile.profileId) : profile.profileId != null) return false;
+        return !(profileId != null ? !profileId.equals(profile.profileId) : profile.profileId != null);
 
-        return true;
     }
 
     @Override

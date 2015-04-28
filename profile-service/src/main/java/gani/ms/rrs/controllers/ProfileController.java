@@ -23,7 +23,7 @@ public class ProfileController {
     public Profile getProfile(@PathVariable("profileId") Integer profileId) {
         Optional profileObj;
 
-    return Optional.of(profileService.getProfile(profileId)).orElse(new Profile());
+    return Optional.ofNullable(profileService.getProfile(profileId)).orElse(new Profile());
     }
 
     @RequestMapping( method = RequestMethod.POST, consumes = {MediaType.APPLICATION_JSON_VALUE},
