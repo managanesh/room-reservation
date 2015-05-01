@@ -7,6 +7,8 @@ public class Result {
 
     private String status;
 
+    private String tarackingId;
+
     private Object body;
 
     public Result(Object body) {
@@ -27,5 +29,13 @@ public class Result {
 
     public void setBody(Object body) {
         this.body = body;
+    }
+
+    public String getTarackingId() {
+        return tarackingId;
+    }
+
+    public void setTarackingId(String tarackingId) {
+        this.tarackingId = tarackingId;
     }
 }

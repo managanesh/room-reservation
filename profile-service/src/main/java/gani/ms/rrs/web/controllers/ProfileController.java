@@ -1,11 +1,11 @@
-package gani.ms.rrs.controllers;
+package gani.ms.rrs.web.controllers;
 
 import gani.ms.rrs.domain.Profile;
-import gani.ms.rrs.repositories.ProfileRepository;
 import gani.ms.rrs.services.IProfileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.request.async.DeferredResult;
 
 import java.util.Optional;
 
@@ -20,10 +20,11 @@ public class ProfileController {
     IProfileService profileService;
 
     @RequestMapping(value = "/{profileId}", method = RequestMethod.GET, produces = "application/json")
-    public Profile getProfile(@PathVariable("profileId") Integer profileId) {
+    public DeferredResult<Profile> getProfile(@PathVariable("profileId") Integer profileId) {
+        DeferredResult<Profile> deferredResult = new DeferredResult<>();
         Optional profileObj;
-
-    return Optional.ofNullable(profileService.getProfile(profileId)).orElse(new Profile());
+        deferredResult.setResult( Optional.ofNullable(profileService.getProfile(profileId)).orElse(new Profile()));
+    return deferredResult;
     }
 
     @RequestMapping( method = RequestMethod.POST, consumes = {MediaType.APPLICATION_JSON_VALUE},

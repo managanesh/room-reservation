@@ -1,6 +1,7 @@
-package gani.ms.rrs.controllers;
+package gani.ms.rrs.web.controllers;
 
 import gani.ms.rrs.domain.Result;
+import gani.ms.rrs.tracing.RequestCorrelation;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
@@ -37,6 +38,7 @@ public class ProfileControllerAdvice implements ResponseBodyAdvice<Object> {
         // don't wrap a body that is already wrapped (must be exception being handled)
         Result result = new Result(body);
         result.setStatus("true");
+        result.setTarackingId(RequestCorrelation.getId());
         return body instanceof Result ? body : result;
     }
 }
