@@ -11,6 +11,8 @@ public class Result {
 
     private Object body;
 
+    private String timeElapsed;
+
     public Result(Object body) {
         this.body = body;
     }
@@ -37,5 +39,13 @@ public class Result {
 
     public void setTarackingId(String tarackingId) {
         this.tarackingId = tarackingId;
+    }
+
+    public String getTimeElapsed() {
+        return timeElapsed;
+    }
+
+    public void setTimeElapsed(String timeElapsed) {
+        this.timeElapsed = timeElapsed;
     }
 }
